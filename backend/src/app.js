@@ -23,6 +23,12 @@ app.use(cors({ origin: env.clientUrl, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan(env.nodeEnv === 'production' ? 'combined' : 'dev'));
 
+app.get('/', (_req, res) =>
+  res.json({
+    message: 'Welcome to the Mana Seva API. Please use /api for endpoints.'
+  })
+);
+
 app.get('/api/health', (_req, res) =>
   res.json({
     status: 'ok',
